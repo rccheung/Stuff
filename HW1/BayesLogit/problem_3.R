@@ -230,7 +230,7 @@ for(i in 2:11){
 newx[,1] = rep(1,569)
 X = newx
 # Fit the Bayesian model:
-fitMG2 = bayes.logregMG(m,y,X,beta.0,Sigma.0.inv, ,type = "GLM",burnin = 5000, retune = 500, niter = 100000)
+fitMG = bayes.logregMG(m,y,X,beta.0,Sigma.0.inv, ,type = "GLM",burnin = 5000, retune = 500, niter = 100000)
 fitMH = bayes.logregMH(m,y,X,beta.0,Sigma.0.inv, type = "GLM", burnin = 5000, retune = 500, niter = 100000)
 
 ##################################################
