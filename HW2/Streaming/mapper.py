@@ -4,7 +4,6 @@
 
 import sys
 
-#f = open('C:\Users\user\School Work\Fall 2013\STA 250\HW2\Problem2\mini_out.txt')
 
 #This function truncates a number f to n decimals
 def trunc(f, n):
