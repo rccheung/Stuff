@@ -1,0 +1,11 @@
+hadoop fs -mkdir data
+hadoop distcp s3://sta250bucket/groups.txt data/
+cd
+cd .versions/hive-0.11.0/examples/queries/
+hadoop fs -copyToLocal  data ./
+
+
+CREATE TABLE bigdata (groups INT, value double) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+LOAD DATA LOCAL INPATH 'data/groups.txt' INTO TABLE bigdata;
+INSERT OVERWRITE LOCAL DIRECTORY './result/means' SELECT bigdata.groups, avg (bigdata.value) FROM bigdata GROUP BY bigdata.groups;
+INSERT OVERWRITE LOCAL DIRECTORY './result/vars' SELECT bigdata.groups, variance (bigdata.value) FROM bigdata GROUP BY bigdata.groups;
